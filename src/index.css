@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Government Portal Design System
+All colors MUST be HSL. Inspired by leading Indian government portals.
+Government branding with accessibility compliance.
+*/
+
+@layer base {
+  :root {
+    /* Core Colors - Government Orange/Saffron Theme */
+    --background: 0 0% 100%;
+    --foreground: 210 40% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 8%;
+
+    /* Government Primary - Saffron/Orange */
+    --primary: 22 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 22 91% 50%;
+    
+    /* Government Secondary - Deep Blue */
+    --secondary: 214 84% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 214 84% 8%;
+
+    /* Success - Green for approvals */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Warning - Amber for pending */
+    --warning: 43 96% 56%;
+    --warning-foreground: 0 0% 0%;
+    
+    /* Info - Government Blue */
+    --info: 214 95% 65%;
+    --info-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 94%;
+    --accent-foreground: 214 84% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 22 91% 55%;
+
+    --radius: 0.75rem;
+    
+    /* Government Specific Colors */
+    --gov-orange: 22 91% 55%;
+    --gov-blue: 214 84% 12%;
+    --gov-green: 142 76% 36%;
+    --gov-red: 0 84% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(22 91% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(214 84% 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-hover: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-focus: 0 0 0 3px hsl(var(--ring) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 40% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 214 32% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 214 32% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 22 91% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 214 32% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 32% 17%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 22 91% 55%;
+    
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(22 91% 40%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(214 32% 18%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(214 32% 12%) 0%, hsl(217 32% 15%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  /* Government Portal Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  /* Accessibility Focus Styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2;
+  }
+  
+  /* High Contrast Mode Support */
+  @media (prefers-contrast: high) {
+    :root {
+      --border: 0 0% 0%;
+      --ring: 0 0% 0%;
+    }
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Government Card Styles */
+  .gov-card {
+    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+  
+  .gov-card-hover {
+    @apply hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  /* Status Chips */
+  .status-chip {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-approved { @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300; }
+  .status-pending { @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300; }
+  .status-rejected { @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300; }
+  .status-draft { @apply bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300; }
+  
+  /* Accessibility Helpers */
+  .skip-link {
+    @apply absolute -top-8 left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md transform -translate-y-12 focus:translate-y-0 transition-transform z-50;
+  }
+  
+  /* Government Button Variants */
+  .btn-gov-primary {
+    @apply bg-primary hover:bg-primary-hover text-primary-foreground font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-gov-secondary {
+    @apply bg-secondary hover:bg-secondary-hover text-secondary-foreground font-semibold py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+}
